@@ -1,9 +1,6 @@
-function SideBar() {
+function SideBar({ selectTab, setSelectTab }) {
   return (
-    <div
-      className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark"
-      style={{ width: "280px" }}
-    >
+    <div className="d-flex flex-column flex-shrink-0 p-3 text-bg-dark slidebar-container">
       <a
         href="/"
         className="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none"
@@ -15,16 +12,25 @@ function SideBar() {
       </a>
       <hr />
       <ul className="nav nav-pills flex-column mb-auto">
-        <li className="nav-item">
-          <a href="#" className="nav-link active" aria-current="page">
+        <li className="nav-item" onClick={() => setSelectTab("Home")}>
+          <a
+            href="#"
+            className={`nav-link ${selectTab == "Home" && "active"} text-white`}
+            aria-current="page"
+          >
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#home"></use>
             </svg>
             Home
           </a>
         </li>
-        <li>
-          <a href="#" className="nav-link text-white">
+        <li onClick={() => setSelectTab("Create Post")}>
+          <a
+            href="#"
+            className={`nav-link ${
+              selectTab == "Create Post" && "active"
+            } text-white`}
+          >
             <svg className="bi pe-none me-2" width="16" height="16">
               <use xlinkHref="#speedometer2"></use>
             </svg>
@@ -39,9 +45,7 @@ function SideBar() {
           className="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
           data-bs-toggle="dropdown"
           aria-expanded="false"
-        >
-          <strong>mdo</strong>
-        </a>
+        ></a>
         <ul className="dropdown-menu dropdown-menu-dark text-small shadow">
           <li>
             <a className="dropdown-item" href="#">
