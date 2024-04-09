@@ -1,8 +1,18 @@
-function Post({item}) {
+import { AiFillDelete } from "react-icons/ai";
+
+function Post({ item }) {
   return (
     <div className="card post-card " style={{ maxWidth: "80%" }}>
       <div className="card-body ">
-        <h5 className="card-title">{item.title}</h5>
+        <h5 className="card-title">
+          {item.title}
+          <span
+            className="position-absolute top-0 start-100 translate-middle badge  rounded-pill bg-danger"
+            onClick={() => deleteOnClick(item.userId)}
+          >
+            <AiFillDelete />
+          </span>
+        </h5>
         <p className="card-text">{item.body}</p>
 
         {item.tags.map((tag) => (
