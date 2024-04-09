@@ -7,3 +7,16 @@
 .contant-container {
   width: 100%;
 }
+
+.post-card {
+  margin: 2rem 1rem;
+  min-height: 5rem;
+}
+.post-hashtags {
+  margin: 0.2rem;
+}
+.post-reaction {
+  width: 100%;
+  margin-top: 2rem;
+}
+

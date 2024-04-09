@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import SideBar from "./components/SideBar";
+import PostList from "./components/PostList";
 function App() {
   return (
     <>
@@ -8,6 +9,7 @@ function App() {
         <SideBar></SideBar>
         <div className="contant-container">
           <Header></Header>
+          <PostList></PostList>
         </div>
       </div>
       <Footer></Footer>
