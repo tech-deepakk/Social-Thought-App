@@ -6,18 +6,19 @@ export const PostListContext = createContext({
   deletePost: () => {},
 });
 
-const PostReducer = (currPost, action) => {
-  let newPost = currPost;
+const PostReducer = (currList, action) => {
+  let newList = currList;
   if (action.type == "DELETE_POST") {
-    newPost = currPost.filter((item) => item.id != action.payload.postId);
+    newList = currList.filter((item) => item.id != action.payload.postId);
+  } else if (action.type == "ADD_POST") {
+    newList = [action.payload.newPost, ...currList];
   }
-  return newPost;
+  return newList;
 };
 
 function PostListProvider({ children }) {
   const [postList, dispatchPostlist] = useReducer(PostReducer, defaultPost);
   const deletePost = (postId) => {
-   
     dispatchPostlist({
       type: "DELETE_POST",
       payload: {
@@ -25,7 +26,15 @@ function PostListProvider({ children }) {
       },
     });
   };
-  const addPost = () => {};
+
+  const addPost = (newPost) => {
+    dispatchPostlist({
+      type: "ADD_POST",
+      payload: {
+        newPost,
+      },
+    });
+  };
 
   return (
     <PostListContext.Provider
@@ -60,10 +69,10 @@ const defaultPost = [
   },
   {
     id: 2,
-    title: "His mother had always taught him",
-    body: "His mother had always taught him not to ever think of himself as better than others. He'd tried to live by this motto. He never looked down on those who were less fortunate or who had less money than him. But the stupidity of the group of people he was talking to made him change his mind.",
+    title: "Going to Delhi",
+    body: "Last friday i amgoing to delhi ,delhi is a huge polpulated city and there are polution also the problem .",
     userId: 232,
-    tags: ["history", "american", "crime"],
+    tags: ["Delhi", "Tourism", "India"],
     reactions: 2,
   },
 ];
