@@ -22,3 +22,12 @@
 .createPost-cointainer {
   padding: 2rem 2rem;
 }
+.sidebar-container {
+  max-width: 12vw;
+  height: 100vh;
+  position: fixed;
+}
+.contant-container {
+  margin-left: 10.5vw;
+  
+}
